@@ -1,0 +1,43 @@
+<mxfile host="Electron" modified="2023-05-30T08:54:12.189Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.8 Chrome/112.0.5615.165 Electron/24.2.0 Safari/537.36" etag="VhPxU13m_7JdVhzy4eGJ" version="21.2.8" type="device">
+  <diagram id="lwgqvJRINGIk6jCcCagH" name="Page-1">
+    <mxGraphModel dx="512" dy="405" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="4auNOPurH9hJKDzZOoez-3" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="100" y="100" width="980" height="560" as="geometry" />
+        </mxCell>
+        <mxCell id="-ikyWUDgd_Xv_9u6cwtD-10" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=10;" parent="4auNOPurH9hJKDzZOoez-3" vertex="1">
+          <mxGeometry width="980" height="560" as="geometry" />
+        </mxCell>
+        <mxCell id="-ikyWUDgd_Xv_9u6cwtD-11" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;Game logic&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" parent="4auNOPurH9hJKDzZOoez-3" vertex="1">
+          <mxGeometry x="397" y="10" width="156" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4auNOPurH9hJKDzZOoez-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.606;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.003;exitY=0.666;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="4auNOPurH9hJKDzZOoez-3" source="4auNOPurH9hJKDzZOoez-1" target="-ikyWUDgd_Xv_9u6cwtD-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4auNOPurH9hJKDzZOoez-1" value="&lt;b&gt;Ship(length, startCoord, orient) factory&lt;/b&gt;&lt;br&gt;numHit int = 0;&lt;br&gt;sunk bool = false&lt;br&gt;&lt;br&gt;Detail:&lt;br&gt;&lt;font color=&quot;#ff0000&quot;&gt;strike()&lt;br&gt;isSunk()&lt;/font&gt;&lt;br&gt;&lt;br&gt;API:&lt;br&gt;{ strike, isSunk }" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;" vertex="1" parent="4auNOPurH9hJKDzZOoez-3">
+          <mxGeometry x="720" y="40" width="240" height="155" as="geometry" />
+        </mxCell>
+        <mxCell id="4auNOPurH9hJKDzZOoez-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.15;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.004;exitY=0.212;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="4auNOPurH9hJKDzZOoez-3" source="-ikyWUDgd_Xv_9u6cwtD-4" target="-ikyWUDgd_Xv_9u6cwtD-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-ikyWUDgd_Xv_9u6cwtD-4" value="&lt;b&gt;Cell() factory&lt;/b&gt;&lt;br&gt;//ship bool = false&lt;br&gt;hit bool = false&lt;br&gt;value = null&lt;br&gt;offLimits = false&lt;br&gt;&lt;br&gt;Detail:&lt;br&gt;strike() =&amp;gt; {&lt;br&gt;if(value) value.strike; hit = true&lt;br&gt;else hit = true&amp;nbsp;&amp;nbsp;&lt;br&gt;}&lt;br&gt;makeShip(ship) =&amp;gt; value = ship&lt;br&gt;&lt;br&gt;API:&lt;br&gt;{ }" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;" parent="4auNOPurH9hJKDzZOoez-3" vertex="1">
+          <mxGeometry x="380" y="70" width="200" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="4auNOPurH9hJKDzZOoez-4" value="&lt;b&gt;Player() factory&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;API:&lt;br&gt;{ }" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;" vertex="1" parent="4auNOPurH9hJKDzZOoez-3">
+          <mxGeometry x="660" y="250" width="240" height="155" as="geometry" />
+        </mxCell>
+        <mxCell id="-ikyWUDgd_Xv_9u6cwtD-8" value="&lt;b&gt;GameController(p1Name, p2Name) factory&lt;br&gt;&lt;/b&gt;GameBoard() obj, players [], activePlayer obj&lt;br&gt;&lt;br&gt;Detail:&lt;br&gt;switchPlayerTurn()&lt;br&gt;printNewRound()&lt;br&gt;playRound(coord)&lt;br&gt;&lt;br&gt;API:&lt;br&gt;{ }" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;" parent="4auNOPurH9hJKDzZOoez-3" vertex="1">
+          <mxGeometry x="300" y="370" width="250" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="-ikyWUDgd_Xv_9u6cwtD-3" value="&lt;b&gt;Gameboard() factory&lt;/b&gt;&lt;br&gt;rows int, columns int, board[]&lt;br&gt;&lt;br&gt;Detail:&lt;br&gt;printBoard() =&amp;gt; console&lt;br&gt;randomShipOrigin(length)&lt;br&gt;makeCellsOffLimits(startCoord, orient, length)&lt;br&gt;placeShips(length)&lt;br&gt;&lt;br&gt;API:&lt;br&gt;{ }" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;" parent="4auNOPurH9hJKDzZOoez-3" vertex="1">
+          <mxGeometry x="50" y="70" width="250" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="-ikyWUDgd_Xv_9u6cwtD-1" value="&lt;h1&gt;&lt;font style=&quot;font-size: 36px;&quot;&gt;Battleship&lt;/font&gt;&lt;/h1&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="554" y="40" width="60" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
