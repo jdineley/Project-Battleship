@@ -1,10 +1,11 @@
 // import Ship from "./ship";
 
-export default function Cell() {
+export default function Cell(coord) {
   let hitBool = false;
   let ship = null;
   let offLimit = false;
   let value = 0;
+  
 
   const isOffLimit = () => offLimit;
 
@@ -23,7 +24,8 @@ export default function Cell() {
             hitBool = true;
             value = 3
           }
-          return true
+          removeCoord()
+          return value
     }
     console.log('fire again, this square is already hit')
     return false
@@ -34,13 +36,28 @@ export default function Cell() {
     value = 1;
   };
 
-  const getValue = () => value;
+  const printValue = (player) => {
+    if(player === 'human') return value;
+    else {
+        if(value === 1) return 0
+        else return value
+    }
+
+  }
+
+  const getValue = () => value
 
   const getShip = () => ship
 
   const setValue = (newValue) => {
     value = newValue;
   };
+
+  const getCoord = () => coord
+
+  const removeCoord = () => {
+    coord = null
+  }
 
   return {
     isOffLimit,
@@ -49,6 +66,9 @@ export default function Cell() {
     makeShip,
     getValue,
     setValue,
-    getShip
+    getShip,
+    getCoord,
+    removeCoord,
+    printValue
   };
 }

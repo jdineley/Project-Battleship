@@ -11,15 +11,17 @@ export default function GameBoard() {
   for (let i = 0; i < rows; i++) {
     board[i] = [];
     for (let j = 0; j < columns; j++) {
-      board[i].push(Cell());
+      board[i].push(Cell([j,i]));
     }
   }
 
-  function printBoard() {
+  const getBoard = () => board;
+
+  function printBoard(player) {
     // const boardWithCellValues = board.map((row) => row.map((cell) => [cell.isOffLimit(), cell.getValue()].join(',')))
     // const boardWithCellValues = board.map((row) => row.map((cell) => cell.getShip()))
     const boardWithCellValues = board.map((row) =>
-      row.map((cell) => cell.getValue())
+      row.map((cell) => cell.printValue(player))
     );
     console.log(boardWithCellValues);
   }
@@ -76,7 +78,7 @@ export default function GameBoard() {
   function placeShips(length) {
     const shipRandomOrigin = randomShipOrigin(length);
     const ship = Ship(length);
-    ships.push(ship);
+    
     const offLimitCheck = [];
 
     if (shipRandomOrigin[1] === "V") {
@@ -97,6 +99,7 @@ export default function GameBoard() {
         i++
       ) {
         board[i][shipRandomOrigin[0][0]].makeShip(ship);
+        ships.push(ship);
       }
       makeCellsOfflimits(shipRandomOrigin[0], shipRandomOrigin[1], length);
       return true;
@@ -118,29 +121,30 @@ export default function GameBoard() {
       i++
     ) {
       board[shipRandomOrigin[0][1]][i].makeShip(ship);
+      ships.push(ship);
     }
     makeCellsOfflimits(shipRandomOrigin[0], shipRandomOrigin[1], length);
     return true;
   }
 
-//   while (!placeShips(4)) {
-//     console.log(4);
-//   }
-//   while (!placeShips(4)) {
-//     console.log(4);
-//   }
-//   while (!placeShips(3)) {
-//     console.log(3);
-//   }
-//   while (!placeShips(3)) {
-//     console.log(3);
-//   }
-//   while (!placeShips(2)) {
-//     console.log(2);
-//   }
-//   while (!placeShips(2)) {
-//     console.log(2);
-//   }
+  while (!placeShips(4)) {
+    console.log(4);
+  }
+  while (!placeShips(4)) {
+    console.log(4);
+  }
+  while (!placeShips(3)) {
+    console.log(3);
+  }
+  while (!placeShips(3)) {
+    console.log(3);
+  }
+  while (!placeShips(2)) {
+    console.log(2);
+  }
+  while (!placeShips(2)) {
+    console.log(2);
+  }
   while (!placeShips(1)) {
     console.log(1);
   }
@@ -153,7 +157,7 @@ export default function GameBoard() {
         console.log('Out of range, fire again!')
         return
     } 
-    let square = board[coord[1]][coord[0]];
+    const square = board[coord[1]][coord[0]];
     return square.strike()
     
 
@@ -164,6 +168,7 @@ export default function GameBoard() {
   return {
     printBoard,
     dropBomb,
-    ships
+    ships,
+    getBoard
   };
 }
