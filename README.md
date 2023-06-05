@@ -4,7 +4,7 @@ Battleships game built with JavaScript, CSS & HTML
 
 Human vs Computer only. The main focus of the build looked at implementing the computer opponent. Less effort toward the game aesthetic.
 
-Although a lot of effort has gone into making the computer make intelligent decisions, of curse there are still room for improvements (see improvements below) Have a play and see what you think.
+Although a lot of effort has gone into making the computer make intelligent decisions, of course there are still room for improvements (see improvements below). Have a play and see what you think.
 
 Improvements:
 
@@ -19,5 +19,5 @@ Todo:
 
 Further comments:
 
-- This is all my own work and like most of the programing problems I tackle has allowed for a decent amout of learning
-- At this point I am still undecided to whether the factory function approach that reveals an object of methods that use private variables within its execution context (closure) or using classes with shared methods on the prototype and simple instance properties is better? First feeling is that classes and objects are a easier to visualise. Refactoring the to use classes is a task for another day!
+- This is all my own work and like most of the programing problems I tackle has allowed for a decent amount of learning
+- At this point I am still undecided to whether the factory function approach that reveals an object of methods that use private variables within its execution context (closure) or using classes with shared methods on the prototype and simple instance properties is better? First feeling is that classes and objects are a easier to visualise. Refactoring to use classes is a task for another day!
