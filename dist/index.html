@@ -4,8 +4,29 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <script src="main.js" defer></script>
-    <title>Document</title>
+    <title>BattleShips</title>
   </head>
-  <body></body>
+  <body>
+    <h1>BattleShips</h1>
+    <form class="player-name">
+      <label for="player-name">Enter Player Name:</label>
+      <input type="text" placeholder="name" />
+      <button type="submit">Submit</button>
+    </form>
+    <main class="hidden">
+      <div class="human">
+        <h2>Human</h2>
+        <div class="board human"></div>
+      </div>
+      <div class="computer">
+        <h2>Computer</h2>
+        <div class="board computer"></div>
+      </div>
+    </main>
+    <div class="winner"></div>
+    <div class="play-again hidden"><button>Play again</button></div>
+    <footer>Copyright JDineley</footer>
+  </body>
 </html>

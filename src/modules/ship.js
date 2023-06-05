@@ -4,24 +4,22 @@ export default function Ship(length) {
 
   const strike = () => {
     numHit++;
-    console.log(`STRIKE!!!! ${numHit} square(s) of ship length: ${length} destroyed. ${length - numHit} left to destroy`)
-    if(numHit === length) sunk = true
-};
+    console.log(
+      `STRIKE!!!! ${numHit} square(s) of ship length: ${length} destroyed. ${
+        length - numHit
+      } left to destroy`
+    );
+    if (numHit === length) sunk = true;
+  };
 
-const getNumHit = () => numHit
+  const getNumHit = () => numHit;
 
-const getSunk = () => sunk
-
-
-//   const isSunk = () => {
-//     sunk = numHit === length ? true : false;
-//     return sunk;
-//   };
+  const getSunk = () => sunk;
 
   return {
     strike,
     getNumHit,
     getSunk,
-    length
+    length,
   };
 }

@@ -6,20 +6,17 @@ export default function GameBoard() {
   const columns = 10;
   const board = [];
   const ships = [];
-  
 
   for (let i = 0; i < rows; i++) {
     board[i] = [];
     for (let j = 0; j < columns; j++) {
-      board[i].push(Cell([j,i]));
+      board[i].push(Cell([j, i]));
     }
   }
 
   const getBoard = () => board;
 
   function printBoard(player) {
-    // const boardWithCellValues = board.map((row) => row.map((cell) => [cell.isOffLimit(), cell.getValue()].join(',')))
-    // const boardWithCellValues = board.map((row) => row.map((cell) => cell.getShip()))
     const boardWithCellValues = board.map((row) =>
       row.map((cell) => cell.printValue(player))
     );
@@ -78,7 +75,7 @@ export default function GameBoard() {
   function placeShips(length) {
     const shipRandomOrigin = randomShipOrigin(length);
     const ship = Ship(length);
-    
+
     const offLimitCheck = [];
 
     if (shipRandomOrigin[1] === "V") {
@@ -153,22 +150,20 @@ export default function GameBoard() {
   }
 
   const dropBomb = (coord) => {
-    if(coord[0] > 9 || coord[0] < 0 || coord[1] > 9 || coord[1] < 0) {
-        console.log('Out of range, fire again!')
-        return
-    } 
+    if (coord[0] > 9 || coord[0] < 0 || coord[1] > 9 || coord[1] < 0) {
+      console.log("Out of range, fire again!");
+      return;
+    }
     const square = board[coord[1]][coord[0]];
-    return square.strike()
-    
-
-  }
-
-//   printBoard();
+    return square.strike();
+  };
 
   return {
     printBoard,
     dropBomb,
     ships,
-    getBoard
+    getBoard,
+    rows,
+    columns,
   };
 }
