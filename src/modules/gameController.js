@@ -84,10 +84,9 @@ export default function GameController(
         return;
       }
       UI.renderBoard(boardString);
-      if (switchPlayer()) return;
     }
     console.log(players);
-
+    if (switchPlayer()) return;
     printNewRound();
   };
 
