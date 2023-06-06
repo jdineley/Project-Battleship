@@ -2,13 +2,15 @@
 
 Battleships game built with JavaScript, CSS & HTML
 
+Try here:  https://jdineley.github.io/Project-Battleship/
+
 Human vs Computer only. The main focus of the build looked at implementing the computer opponent. Less effort toward the game aesthetic.
 
 Although a lot of effort has gone into making the computer make intelligent decisions, of course there are still room for improvements (see improvements below). Have a play and see what you think.
 
 Improvements:
 
-1. For computer's target board, remove the off-limit cells for sunk ships. As no two ships can be touching
+1. For computer's target board, remove the off-limit cells for sunk ships. As no two ships can be touching - DONE
 
 Todo:
 
