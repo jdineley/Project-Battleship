@@ -92,17 +92,76 @@ export default function GameController(
 
   const computersTurn = () => {
     UI.addHumanClickHandler();
+    const surroundingSquares = [
+      [0, -1],
+      [1, 0],
+      [0, 1],
+      [-1, 0],
+    ];
     const coordsLeft = [];
+    const coordsSunkShips = [];
+    const sunkShipsCoordsOffLimits = [];
     const targetBoard = activePlayer.targetBoard.getBoard();
-    targetBoard
-      .map((row) => row.map((cell) => cell.getCoord()))
-      .map((row) =>
-        row.forEach((coord) => {
-          if (coord) coordsLeft.push(coord);
-        })
-      );
+
+    targetBoard.forEach((row) =>
+      row.forEach((cell) => {
+        if (!cell.getHitBool()) coordsLeft.push(cell.getCoord());
+      })
+    );
+
+    // targetBoard
+    //   .map((row) => row.map((cell) => cell.getCoord()))
+    //   .map((row) =>
+    //     row.forEach((coord) => {
+    //       if (coord) coordsLeft.push(coord);
+    //     })
+    //   );
+    targetBoard.forEach((row) =>
+      row.forEach((cell) => {
+        if (cell.getShip()) {
+          if (cell.getShip().getSunk()) coordsSunkShips.push(cell.getCoord());
+        }
+      })
+    );
+    console.log(coordsSunkShips);
+    if (coordsSunkShips.length > 0) {
+      coordsSunkShips.forEach((coord) => {
+        surroundingSquares.forEach((offset) => {
+          if (
+            coord[0] + offset[0] >= 0 &&
+            coord[0] + offset[0] <= 9 &&
+            coord[1] + offset[1] >= 0 &&
+            coord[1] + offset[1] <= 9
+          ) {
+            sunkShipsCoordsOffLimits.push([
+              coord[0] + offset[0],
+              coord[1] + offset[1],
+            ]);
+          }
+        });
+      });
+    }
+    //
+    const sunkShipsCoordsOffLimitsStringify = sunkShipsCoordsOffLimits.map(
+      (coord) => coord.toString()
+    );
+    const sunkShipsCoordsOffLimitsStringifyNoDups =
+      sunkShipsCoordsOffLimitsStringify.filter((coord, i, arr) => {
+        if (arr.indexOf(coord) === i) return coord;
+      });
     const coordsLeftStringify = coordsLeft.map((coord) => coord.toString());
-    console.log(coordsLeftStringify);
+    // coordsLeftStringify - sunkShipsCoordsOffLimitsStringifyNoDups:
+    const realCoordsLeftStringify = coordsLeftStringify.filter(
+      (coord, i, arr) => {
+        if (sunkShipsCoordsOffLimitsStringifyNoDups.indexOf(coord) === -1)
+          return coord;
+      }
+    );
+    console.log(coordsLeftStringify, realCoordsLeftStringify);
+    const realCoordsLeft = realCoordsLeftStringify.map((coords) => {
+      return [+coords[0], +coords[2]];
+    });
+    console.log(realCoordsLeft);
 
     function generalFoundHitProcessing(coord) {
       const hitType = checkHitType(coord);
@@ -114,7 +173,9 @@ export default function GameController(
               return singleHitProcessing(coord, hitType);
           } else return singleHitProcessing(coord, hitType);
           if (
-            coordsLeftStringify.includes([coord[0] + i, coord[1]].toString())
+            realCoordsLeftStringify.includes(
+              [coord[0] + i, coord[1]].toString()
+            )
           ) {
             playRound([coord[0] + i, coord[1]]);
             return true;
@@ -129,7 +190,9 @@ export default function GameController(
               return singleHitProcessing(coord, hitType);
           } else return singleHitProcessing(coord, hitType);
           if (
-            coordsLeftStringify.includes([coord[0], coord[1] + i].toString())
+            realCoordsLeftStringify.includes(
+              [coord[0], coord[1] + i].toString()
+            )
           ) {
             playRound([coord[0], coord[1] + i]);
             return true;
@@ -144,7 +207,9 @@ export default function GameController(
               return singleHitProcessing(coord, hitType);
           } else return singleHitProcessing(coord, hitType);
           if (
-            coordsLeftStringify.includes([coord[0] - i, coord[1]].toString())
+            realCoordsLeftStringify.includes(
+              [coord[0] - i, coord[1]].toString()
+            )
           ) {
             playRound([coord[0] - i, coord[1]]);
             return true;
@@ -159,7 +224,9 @@ export default function GameController(
               return singleHitProcessing(coord, hitType);
           } else return singleHitProcessing(coord, hitType);
           if (
-            coordsLeftStringify.includes([coord[0], coord[1] - i].toString())
+            realCoordsLeftStringify.includes(
+              [coord[0], coord[1] - i].toString()
+            )
           ) {
             playRound([coord[0], coord[1] - i]);
             return true;
@@ -300,9 +367,9 @@ export default function GameController(
 
       console.log(shootNearOffset);
 
-      function getRandomSurroundIndex() {
-        return Math.floor(Math.random() * 4);
-      }
+      // function getRandomSurroundIndex() {
+      //   return Math.floor(Math.random() * 4);
+      // }
       const surroundingSquares = [];
       shootNearOffset.forEach((offset) => {
         surroundingSquares.push([coord[0] + offset[0], coord[1] + offset[1]]);
@@ -315,7 +382,7 @@ export default function GameController(
         square.toString()
       );
       const surroundingSquaresAvailable = surroundingSquaresStringify
-        .filter((square) => coordsLeftStringify.includes(square))
+        .filter((square) => realCoordsLeftStringify.includes(square))
         .map((square) => [+square[0], +square[2]]);
 
       console.log("surroundingSquaresAvailable", surroundingSquaresAvailable);
@@ -330,8 +397,8 @@ export default function GameController(
 
     function generalRandomHit() {
       console.log("skipped");
-      const randomIndex = Math.floor(Math.random() * coordsLeft.length);
-      playRound(coordsLeft[randomIndex]);
+      const randomIndex = Math.floor(Math.random() * realCoordsLeft.length);
+      playRound(realCoordsLeft[randomIndex]);
       return true;
     }
   };

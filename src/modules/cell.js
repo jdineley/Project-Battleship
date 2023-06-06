@@ -21,7 +21,7 @@ export default function Cell(coord) {
         hitBool = true;
         value = 3;
       }
-      removeCoord();
+      // removeCoord();
       return value;
     }
     console.log("fire again, this square is already hit");

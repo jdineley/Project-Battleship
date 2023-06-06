@@ -108,7 +108,7 @@ export default function generateUI() {
     boards.forEach((board) => {
       board.textContent = "";
     });
-    winnerDiv.textContent = ""
+    winnerDiv.textContent = "";
     game = GameController();
     init("board1", 0);
     init("board2", 1);
