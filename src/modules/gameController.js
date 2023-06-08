@@ -94,8 +94,12 @@ export default function GameController(
     UI.addHumanClickHandler();
     const surroundingSquares = [
       [0, -1],
+      [1, -1],
       [1, 0],
+      [1, 1],
       [0, 1],
+      [-1,1],
+      [-1, -1],
       [-1, 0],
     ];
     const coordsLeft = [];

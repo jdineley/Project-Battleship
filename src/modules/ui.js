@@ -10,12 +10,14 @@ const playAgainButton = document.querySelector(".play-again > button");
 const playAgainDiv = document.querySelector(".play-again");
 const playerTitlesH2 = document.querySelectorAll("h2");
 const winnerDiv = document.querySelector(".winner");
+const instructionDiv = document.querySelector(".instruction")
 
 export default function generateUI() {
   playerNameForm.addEventListener("submit", (e) => {
     e.preventDefault();
     humanH2.textContent = nameInput.value || "Chuck Noris";
     main.classList.remove("hidden");
+    instructionDiv.classList.remove("hidden")
     playAgainDiv.classList.remove("hidden");
     playerNameForm.classList.add("hidden");
   });
