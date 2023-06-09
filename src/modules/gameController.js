@@ -112,14 +112,6 @@ export default function GameController(
         if (!cell.getHitBool()) coordsLeft.push(cell.getCoord());
       })
     );
-
-    // targetBoard
-    //   .map((row) => row.map((cell) => cell.getCoord()))
-    //   .map((row) =>
-    //     row.forEach((coord) => {
-    //       if (coord) coordsLeft.push(coord);
-    //     })
-    //   );
     targetBoard.forEach((row) =>
       row.forEach((cell) => {
         if (cell.getShip()) {
@@ -172,10 +164,9 @@ export default function GameController(
       if (hitType === "single") return singleHitProcessing(coord);
       if (hitType === 0) {
         for (let i = 0; i < 4; i++) {
-          if (coord[0] + i) {
+          if (coord[0] + i < 10) {
             if (targetBoard[coord[1]][coord[0] + i].getValue() === 3)
               return singleHitProcessing(coord, hitType);
-          } else return singleHitProcessing(coord, hitType);
           if (
             realCoordsLeftStringify.includes(
               [coord[0] + i, coord[1]].toString()
@@ -184,15 +175,15 @@ export default function GameController(
             playRound([coord[0] + i, coord[1]]);
             return true;
           }
+        } 
         }
-        return singleHitProcessing(coord);
+        return singleHitProcessing(coord, hitType);
       }
       if (hitType === 1) {
         for (let i = 0; i < 4; i++) {
           if (coord[1] + i < 10) {
             if (targetBoard[coord[1] + i][coord[0]].getValue() === 3)
               return singleHitProcessing(coord, hitType);
-          } else return singleHitProcessing(coord, hitType);
           if (
             realCoordsLeftStringify.includes(
               [coord[0], coord[1] + i].toString()
@@ -201,15 +192,15 @@ export default function GameController(
             playRound([coord[0], coord[1] + i]);
             return true;
           }
+        } 
         }
-        return singleHitProcessing(coord);
+        return singleHitProcessing(coord, hitType);
       }
       if (hitType === 2) {
         for (let i = 0; i < 4; i++) {
-          if (coord[0] - i > 0) {
+          if (coord[0] - i >= 0) {
             if (targetBoard[coord[1]][coord[0] - i].getValue() === 3)
               return singleHitProcessing(coord, hitType);
-          } else return singleHitProcessing(coord, hitType);
           if (
             realCoordsLeftStringify.includes(
               [coord[0] - i, coord[1]].toString()
@@ -218,15 +209,15 @@ export default function GameController(
             playRound([coord[0] - i, coord[1]]);
             return true;
           }
+        } 
         }
-        return singleHitProcessing(coord);
+        return singleHitProcessing(coord, hitType);
       }
       if (hitType === 3) {
         for (let i = 0; i < 4; i++) {
-          if (coord[1] - i > 0) {
+          if (coord[1] - i >= 0) {
             if (targetBoard[coord[1] - i][coord[0]].getValue() === 3)
               return singleHitProcessing(coord, hitType);
-          } else return singleHitProcessing(coord, hitType);
           if (
             realCoordsLeftStringify.includes(
               [coord[0], coord[1] - i].toString()
@@ -235,8 +226,9 @@ export default function GameController(
             playRound([coord[0], coord[1] - i]);
             return true;
           }
+        } 
         }
-        return singleHitProcessing(coord);
+        return singleHitProcessing(coord, hitType);
       }
     }
 
