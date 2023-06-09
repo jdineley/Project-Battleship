@@ -2,6 +2,8 @@
 
 Battleships game built with JavaScript, CSS & HTML
 
+The computer is pretty smart here, just a couple of points less than a human!  Can you beat it!!??
+
 Try here:  https://jdineley.github.io/Project-Battleship/
 
 Human vs Computer only. The main focus of the build looked at implementing the computer opponent. Less effort toward the game aesthetic.
@@ -11,6 +13,7 @@ Although a lot of effort has gone into making the computer make intelligent deci
 Improvements:
 
 1. For computer's target board, remove the off-limit cells for sunk ships. As no two ships can be touching - DONE
+2. Computer count what ships are left unsunk and hit squares accordingly.  This is a difficult implementation as it requires storing an accessible snapshot of the whole board that can be summised in one function to determine the best squares to hit..  good problem for another time!
 
 Todo:
 
